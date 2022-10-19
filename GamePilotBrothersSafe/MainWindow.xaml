@@ -1,0 +1,42 @@
+﻿<Window x:Class="GamePilotBrothersSafe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Pilot Brother's Safe" Height="600" Width="600">
+    <Window.Resources>
+        <Style x:Key="OnOffToggleButtonStyle" x:Shared="False" TargetType="{x:Type ToggleButton}">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="/images/on.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Content" >
+                        <Setter.Value>
+                            <Image Source="/images/off.png"   />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <DockPanel x:Name="MainStackPanel" Margin="10,10,10,10"  >
+        <StackPanel DockPanel.Dock="Top">
+            <DockPanel>
+                <Label x:Name="VictoryStatusLabel" Content="Victory!"  HorizontalAlignment="Left" DockPanel.Dock="Left" FontSize="16" FontWeight="Bold" Visibility="Hidden"/>
+                <Button x:Name="StartNewGameButton" Content="New game" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Right" Click="StartNewGameButton_Click"></Button>
+            </DockPanel>
+            <DockPanel x:Name="SizeOfSafeTextBox">
+                <Label Content="Field size:" Width="82" />
+                <Slider x:Name="SizeOfSafeSlider" Maximum="16" Minimum="2" SmallChange="1" TickPlacement="TopLeft"
+                        Value="4" AutoToolTipPlacement="TopLeft"  DockPanel.Dock="Right" IsSnapToTickEnabled="True"/>
+            </DockPanel>
+        </StackPanel>
+        <Grid x:Name="GameField"></Grid>
+    </DockPanel>
+</Window>
